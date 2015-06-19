@@ -29,7 +29,7 @@ import android.util.Log;
 
 public class ServerRequest {
     private final static String TAG = "ServerRequest";
-    private final String serverUri = "http://192.168.142.1/CobaServerAndroid";
+    private final String serverUri = "http://findkos.hol.es";
     public static final String urlSelectAll = "select_all.php";
     public static final String urlDelete = "delete_mahasiswa.php";
     public static final String urlSubmit = "submit_mahasiswa.php";

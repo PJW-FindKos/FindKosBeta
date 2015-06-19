@@ -10,10 +10,10 @@
 //$db = mysqli_select_db('latihan_android') or die(mysql_error());
 class Database
 {
-    private static $dbName = 'latihan_android' ;
-    private static $dbHost = 'localhost' ;
-    private static $dbUsername = 'root';
-    private static $dbUserPassword = '';
+    private static $dbName = 'u141379420_00000' ;
+    private static $dbHost = 'mysql.idhostinger.com' ;
+    private static $dbUsername = 'u141379420_root';
+    private static $dbUserPassword = 'Ckud0SaZxbR';
 
     private static $cont  = null;
 

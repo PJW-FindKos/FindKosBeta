@@ -32,8 +32,8 @@ public class DetailMahasiswa extends Activity {
         mahasiswa = new Mahasiswa();
         server = new ServerRequest();
         initView();
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        //ActionBar actionBar = getActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void initView(){

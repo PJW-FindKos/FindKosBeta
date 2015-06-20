@@ -31,8 +31,8 @@ public class FormMahasiswa extends Activity {
         setContentView(R.layout.activity_form_mahasiswa);
         initView();
         server = new ServerRequest();
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        //ActionBar actionBar = getActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
         mahasiswa = new Mahasiswa();
         if(getIntent().hasExtra("id")){
             String id = getIntent().getStringExtra("id");

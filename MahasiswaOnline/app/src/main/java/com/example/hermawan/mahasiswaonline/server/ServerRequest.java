@@ -24,13 +24,15 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+
+import com.example.hermawan.mahasiswaonline.entities.Kos;
 import com.example.hermawan.mahasiswaonline.entities.Mahasiswa;
 import android.util.Log;
 
 public class ServerRequest {
     private final static String TAG = "ServerRequest";
     private final String serverUri = "http://findkos.hol.es";
-    public static final String urlSelectAll = "select_all.php";
+    public static final String urlSelectAll = "kos_all.php";
     public static final String urlDelete = "delete_mahasiswa.php";
     public static final String urlSubmit = "submit_mahasiswa.php";
 
@@ -71,17 +73,20 @@ public class ServerRequest {
     }
 
     /** Mengirimkan POST request */
-    public int sendPostRequest(Mahasiswa mahasiswa, String url){
+    public int sendPostRequest(Kos kos, String url){
         int replyCode = 99;
         HttpClient httpClient;
         HttpPost post = new HttpPost(this.serverUri+"/"+url);
         /** menambahkan parameter ke dalam request */
         List<NameValuePair> value = new ArrayList<NameValuePair>();
-        value.add(new BasicNameValuePair("id", mahasiswa.getId().toString()));
-        value.add(new BasicNameValuePair("nim", mahasiswa.getNim()));
-        value.add(new BasicNameValuePair("nama", mahasiswa.getNama()));
-        value.add(new BasicNameValuePair("telp", mahasiswa.getTelp()));
-        value.add(new BasicNameValuePair("alamat", mahasiswa.getAlamat()));
+        value.add(new BasicNameValuePair("id", kos.getId().toString()));
+        value.add(new BasicNameValuePair("harga", kos.getHarga()));
+        value.add(new BasicNameValuePair("latitude", kos.getLatitude()));
+        value.add(new BasicNameValuePair("longtitude", kos.getLongitude()));
+        value.add(new BasicNameValuePair("alamat", kos.getAlamat()));
+        value.add(new BasicNameValuePair("namaPemiliki", kos.getNamaPemilik()));
+        value.add(new BasicNameValuePair("noHP", kos.getNoHP()));
+        value.add(new BasicNameValuePair("fasilitas", kos.getFasilitas()));
 
         try {
             HttpParams params = new BasicHttpParams();

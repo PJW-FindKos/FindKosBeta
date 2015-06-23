@@ -10,6 +10,8 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.example.hermawan.mahasiswaonline.entities.Kos;
 import com.example.hermawan.mahasiswaonline.entities.ListAdapterMahasiswa;
 import com.example.hermawan.mahasiswaonline.entities.Mahasiswa;
 import com.example.hermawan.mahasiswaonline.server.ServerRequest;
@@ -145,18 +147,21 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
         List<Mahasiswa> list = new ArrayList<Mahasiswa>();
         try {
             JSONObject jsonObj = new JSONObject(response);
-            JSONArray jsonArray = jsonObj.getJSONArray("mahasiswa");
+            JSONArray jsonArray = jsonObj.getJSONArray("kos");
             Log.d(TAG, "data lengt: "+jsonArray.length());
-            Mahasiswa mhs = null;
+            Kos kos = null;
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
-                mhs = new Mahasiswa();
-                mhs.setId(obj.getInt("id"));
-                mhs.setNim(obj.getString("nim"));
-                mhs.setNama(obj.getString("nama"));
-                mhs.setTelp(obj.getString("telp"));
-                mhs.setAlamat(obj.getString("alamat"));
-                list.add(mhs);
+                kos = new Kos();
+                kos.setId(obj.getInt("id"));
+                kos.setAlamat(obj.getString("alamat"));
+                kos.setHarga(obj.getString("harga"));
+                kos.setLatitude(obj.getString("latitude"));
+                kos.setLongitude(obj.getString("longitude"));
+                kos.setNamaPemilik(obj.getString("namaPemilik"));
+                kos.setNoHP(obj.getString("noHP"));
+                kos.setFasilitas(obj.getString("fasilitas"));
+                list.add(kos);
             }
         } catch (JSONException e) {
             Log.d(TAG, e.getMessage());

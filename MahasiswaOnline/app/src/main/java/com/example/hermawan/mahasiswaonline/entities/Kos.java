@@ -85,7 +85,7 @@ public class Kos {
         return fasilitas;
     }
 
-    private void setFasilitas(String fasilitas) {
+    public void setFasilitas(String fasilitas) {
         this.fasilitas = fasilitas;
     }
 }

@@ -9,7 +9,7 @@
 include('connection.php');
 $pdo = Database::connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$query = "select * from mahasiswa";
+$query = "select * from kos";
 $q = $pdo->prepare($query);
 $q->execute();
 $data = $q->fetchAll(PDO::FETCH_ASSOC);

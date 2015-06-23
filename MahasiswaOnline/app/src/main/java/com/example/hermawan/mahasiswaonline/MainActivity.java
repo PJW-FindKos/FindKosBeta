@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.hermawan.mahasiswaonline.entities.Kos;
+import com.example.hermawan.mahasiswaonline.entities.ListAdapterKos;
 import com.example.hermawan.mahasiswaonline.entities.ListAdapterMahasiswa;
 import com.example.hermawan.mahasiswaonline.entities.Mahasiswa;
 import com.example.hermawan.mahasiswaonline.server.ServerRequest;
@@ -41,9 +42,12 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
     private ActionMode.Callback amCallback;
     private ProgressDialog progressDialog;
     private ServerRequest serverRequest;
-    private List<Mahasiswa> list;
-    private ListAdapterMahasiswa adapter;
-    private Mahasiswa selectedList;
+    //private List<Mahasiswa> list;
+    private List<Kos> list;
+    //private ListAdapterMahasiswa adapter;
+    private ListAdapterKos adapter;
+    //private Mahasiswa selectedList;
+    private Kos selectedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,24 +88,31 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
                 return false;
             }
         };
-        list = new ArrayList<Mahasiswa>();
+        //list = new ArrayList<Mahasiswa>();
+        list = new ArrayList<Kos>();
         /** melakukan load data melalui AsyncTask */
         new MainActivityAsync().execute("load");
     }
 
     private void showUpdateForm(){
-        Intent in = new Intent(getApplicationContext(), FormMahasiswa.class);
+        Intent in = new Intent(getApplicationContext(), FormKos.class);
         in.putExtra("id", selectedList.getId().toString());
-        in.putExtra("nim", selectedList.getNim());
-        in.putExtra("nama", selectedList.getNama());
-        in.putExtra("telp", selectedList.getTelp());
-        in.putExtra("alamat", selectedList.getAlamat());
+        in.putExtra("namaPemilik", selectedList.getNamaPemilik().toString());
+        //in.putExtra("nim", selectedList.getNim());
+        //in.putExtra("nama", selectedList.getNama());
+        //in.putExtra("telp", selectedList.getTelp());
+        in.putExtra("alamat", selectedList.getAlamat().toString());
+        in.putExtra("harga", selectedList.getHarga().toString());
+        in.putExtra("noHP", selectedList.getNoHP().toString());
+        in.putExtra("longitude", selectedList.getLongitude().toString());
+        in.putExtra("latitude", selectedList.getLatitude().toString());
+        in.putExtra("fasilitas", selectedList.getFasilitas().toString());
         startActivity(in);
     }
 
     private void delete(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Delete "+selectedList.getNama()+" ?");
+        builder.setMessage("Delete "+selectedList.getNamaPemilik()+" ?");
         builder.setTitle("Delete");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -136,15 +147,17 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.option_menu_new:
-                Intent in = new Intent(getApplicationContext(), FormMahasiswa.class);
+                Intent in = new Intent(getApplicationContext(), FormKos.class);
                 startActivity(in);
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private List<Mahasiswa> processResponse(String response){
-        List<Mahasiswa> list = new ArrayList<Mahasiswa>();
+    //private List<Mahasiswa> processResponse(String response){
+    //List<Mahasiswa> list = new ArrayList<Mahasiswa>();
+    private List<Kos> processResponse(String response){
+        List<Kos> list = new ArrayList<Kos>();
         try {
             JSONObject jsonObj = new JSONObject(response);
             JSONArray jsonArray = jsonObj.getJSONArray("kos");
@@ -170,7 +183,8 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
     }
 
     private void populateListView(){
-        adapter = new ListAdapterMahasiswa(getApplicationContext(), list);
+        //adapter = new ListAdapterMahasiswa(getApplicationContext(), list);
+        adapter = new ListAdapterKos(getApplicationContext(), list);
         listView.setAdapter(adapter);
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
@@ -181,7 +195,8 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
                 }
                 actionMode = startActionMode(amCallback);
                 v.setSelected(true);
-                selectedList = (Mahasiswa) adapter.getItem(pos);
+                //selectedList = (Mahasiswa) adapter.getItem(pos);
+                selectedList = (Kos) adapter.getItem(pos);
                 return true;
             }
 
@@ -192,12 +207,13 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
             @Override
             public void onItemClick(AdapterView<?> adapterView, View v, int pos,
                                     long id) {
-                selectedList = (Mahasiswa) adapter.getItem(pos);
+                //selectedList = (Mahasiswa) adapter.getItem(pos);
+                selectedList = (Kos) adapter.getItem(pos);
                 Intent in = new Intent(getApplicationContext(), DetailMahasiswa.class);
                 in.putExtra("id", selectedList.getId().toString());
-                in.putExtra("nim", selectedList.getNim());
-                in.putExtra("nama", selectedList.getNama());
-                in.putExtra("telp", selectedList.getTelp());
+                //in.putExtra("nim", selectedList.getNim());
+                //in.putExtra("nama", selectedList.getNama());
+                //in.putExtra("telp", selectedList.getTelp());
                 in.putExtra("alamat", selectedList.getAlamat());
                 startActivity(in);
             }

@@ -17,13 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
-
+//import com.example.hermawan.mahasiswaonline.entities.Kos;
 public class FormMahasiswa extends Activity {
     private EditText textNim, textNama, textTelp, textAlamat;
     private ProgressDialog progressDialog;
     private ServerRequest server;
     private int replyCode;
     private Mahasiswa mahasiswa;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +98,7 @@ public class FormMahasiswa extends Activity {
         mahasiswa.setTelp(telp);
         mahasiswa.setAlamat(alamat);
         /**Mengirimkan POST reques*/
-        replyCode = server.sendPostRequest(mahasiswa, ServerRequest.urlSubmit);
+        //replyCode = server.sendPostRequest(mahasiswa, ServerRequest.urlSubmit);
     }
 
     private class FormMahasiswaAsync extends AsyncTask<String, String, String>{

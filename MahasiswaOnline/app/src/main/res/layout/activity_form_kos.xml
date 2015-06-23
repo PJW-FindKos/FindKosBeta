@@ -1,0 +1,117 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    tools:context="com.example.hermawan.mahasiswaonline.FormKos"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Pemilik :" />
+
+        <EditText
+            android:id="@+id/add_new_namaPemilik"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Pemilik Kos diisi disini"
+            android:inputType="number"
+            android:layout_marginBottom="30dp"
+            android:ems="10" >
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat :" />
+
+        <EditText
+            android:id="@+id/add_new_alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alamat lengkap pemilik kos"
+            android:layout_marginBottom="30dp"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harga :" />
+
+        <EditText
+            android:id="@+id/add_new_harga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rp. XXX / bulan atau Rp. XXX / tahun"
+            android:inputType="textPhonetic"
+            android:layout_marginBottom="30dp"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor Handphone Pemilik :" />
+
+        <EditText
+            android:id="@+id/add_new_noHP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:minHeight="80dp"
+            android:hint="Nomor Handphone" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitude Alamat" />
+
+        <EditText
+            android:id="@+id/add_new_longitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:minHeight="80dp"
+            android:hint="Longitude sesuai GMAPS" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude :" />
+
+        <EditText
+            android:id="@+id/add_new_latitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:minHeight="80dp"
+            android:hint="Latitude sesuai GMAPS" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fasilitas :" />
+
+        <EditText
+            android:id="@+id/add_new_fasilitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:minHeight="80dp"
+            android:hint="Fasilitas yang ditawarkan" />
+    </LinearLayout>
+
+</ScrollView>

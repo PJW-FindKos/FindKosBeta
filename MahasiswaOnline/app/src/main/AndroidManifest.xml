@@ -18,15 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".FormMahasiswa" >
+        <activity android:name=".FormMahasiswa" >
+        </activity>
+        <activity android:name=".DetailMahasiswa" >
         </activity>
         <activity
-            android:name=".DetailMahasiswa" >
+            android:name=".FormKos"
+            android:label="@string/title_activity_form_kos" >
         </activity>
-
-
     </application>
 
 </manifest>

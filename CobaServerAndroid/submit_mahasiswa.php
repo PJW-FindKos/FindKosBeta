@@ -9,16 +9,24 @@
 include('connection.php');
 
 $id = (int)$_POST['id'];
-$nim = $_POST['nim'];
-$nama = $_POST['nama'];
-$telp = $_POST['telp'];
+$namaPemilik = $_POST['namaPemilik'];
 $alamat = $_POST['alamat'];
+$harga = $_POST['harga'];
+$noHP = $_POST['noHP'];
+$latitude = $_POST['latitude'];
+$longitude = $_POST['longitude'];
+$fasilitas = $_POST['fasilitas'];
 
-$query = 'insert into mahasiswa (nim, nama, telp, alamat) values ("'.$nim.'", "'.$nama.'", "'.$telp.'", "'.$alamat.'")';
+var_dump($query);
+$pdo = Database::connect();
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$query = 'insert into kos(namaPemilik, alamat, harga, noHP, latitude, longitude, fasilitas) values(?, ?, ?, ?, ?, ?, ?)';
 
 if($id>0){
-    $query = 'update mahasiswa set nama = "'.$nama.'", nim = "'.$nim.'", telp = "'.$telp.'", alamat = "'.$alamat.'" where id = '.$id;
+    $query = 'update mahasiswa set namaPemilik = "'.$namaPemilik.'", alamat = "'.$alamat.'", harga = "'.$harga.'", noHP = "'.$noHP.'", latitude = "'.$latitude.'", longitude = "'.$longitude.'", fasilitas = "'.$fasilitas.'" where id = '.$id;
 }
-mysql_query($query) or die(mysql_error());
+$q = $pdo->prepare($query);
+$q->execute(array($namaPemilik, $alamat, $harga, $noHP, $latitude, $longitude, $fasilitas));
+Database::disconnect();
 
 ?>

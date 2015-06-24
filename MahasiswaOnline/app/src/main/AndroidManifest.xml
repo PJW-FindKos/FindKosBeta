@@ -26,6 +26,10 @@
             android:name=".FormKos"
             android:label="@string/title_activity_form_kos" >
         </activity>
+        <activity
+            android:name=".DetailKos"
+            android:label="@string/title_activity_detail_kos" >
+        </activity>
     </application>
 
 </manifest>

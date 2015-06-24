@@ -209,18 +209,25 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
                                     long id) {
                 //selectedList = (Mahasiswa) adapter.getItem(pos);
                 selectedList = (Kos) adapter.getItem(pos);
-                Intent in = new Intent(getApplicationContext(), DetailMahasiswa.class);
+                Intent in = new Intent(getApplicationContext(), DetailKos.class);
                 in.putExtra("id", selectedList.getId().toString());
+                in.putExtra("namaPemilik", selectedList.getNamaPemilik().toString());
                 //in.putExtra("nim", selectedList.getNim());
                 //in.putExtra("nama", selectedList.getNama());
                 //in.putExtra("telp", selectedList.getTelp());
-                in.putExtra("alamat", selectedList.getAlamat());
+                in.putExtra("alamat", selectedList.getAlamat().toString());
+                in.putExtra("harga", selectedList.getHarga().toString());
+                in.putExtra("noHP", selectedList.getNoHP().toString());
+                in.putExtra("longitude", selectedList.getLongitude().toString());
+                in.putExtra("latitude", selectedList.getLatitude().toString());
+                in.putExtra("fasilitas", selectedList.getFasilitas().toString());
                 startActivity(in);
             }
         });
     }
 
     private class MainActivityAsync extends AsyncTask<String, Void, String>{
+
 
         @Override
         protected void onPreExecute() {

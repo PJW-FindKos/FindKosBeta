@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_margin="5dp"
-    tools:context="com.example.hermawan.mahasiswaonline.FormKos"
+    tools:context="com.example.hermawan.mahasiswaonline.DetailKos"
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -24,7 +24,8 @@
             android:hint="Nama Pemilik Kos diisi disini"
             android:inputType="text"
             android:layout_marginBottom="30dp"
-            android:ems="10" >
+            android:ems="10"
+            android:enabled="false" >
             <requestFocus />
         </EditText>
 
@@ -40,7 +41,8 @@
             android:layout_height="wrap_content"
             android:hint="Alamat lengkap pemilik kos"
             android:layout_marginBottom="30dp"
-            android:ems="10" />
+            android:ems="10"
+            android:enabled="false"/>
 
         <TextView
             android:id="@+id/textView3"
@@ -55,7 +57,8 @@
             android:hint="Rp. XXX / bulan atau Rp. XXX / tahun"
             android:inputType="textPhonetic"
             android:layout_marginBottom="30dp"
-            android:ems="10" />
+            android:ems="10"
+            android:enabled="false"/>
 
         <TextView
             android:id="@+id/textView4"
@@ -69,7 +72,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:minHeight="80dp"
-            android:hint="Nomor Handphone" />
+            android:hint="Nomor Handphone"
+            android:enabled="false"/>
 
         <TextView
             android:id="@+id/textView5"
@@ -83,7 +87,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:minHeight="80dp"
-            android:hint="Longitude sesuai GMAPS" />
+            android:hint="Longitude sesuai GMAPS"
+            android:enabled="false"/>
 
         <TextView
             android:id="@+id/textView6"
@@ -97,7 +102,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:minHeight="80dp"
-            android:hint="Latitude sesuai GMAPS" />
+            android:hint="Latitude sesuai GMAPS"
+            android:enabled="false"/>
 
         <TextView
             android:id="@+id/textView7"
@@ -111,7 +117,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:minHeight="80dp"
-            android:hint="Fasilitas yang ditawarkan" />
+            android:hint="Fasilitas yang ditawarkan"
+            android:enabled="false"/>
     </LinearLayout>
 
 </ScrollView>

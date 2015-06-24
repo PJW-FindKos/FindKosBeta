@@ -84,7 +84,7 @@ public class ServerRequest {
         value.add(new BasicNameValuePair("latitude", kos.getLatitude()));
         value.add(new BasicNameValuePair("longtitude", kos.getLongitude()));
         value.add(new BasicNameValuePair("alamat", kos.getAlamat()));
-        value.add(new BasicNameValuePair("namaPemiliki", kos.getNamaPemilik()));
+        value.add(new BasicNameValuePair("namaPemilik", kos.getNamaPemilik()));
         value.add(new BasicNameValuePair("noHP", kos.getNoHP()));
         value.add(new BasicNameValuePair("fasilitas", kos.getFasilitas()));
 
@@ -99,6 +99,7 @@ public class ServerRequest {
             StatusLine status = httpResponse.getStatusLine();
             if(status.getStatusCode() == HttpStatus.SC_OK){
                 Log.d(TAG, "submitted sucessfully...");
+                //Log.d(TAG, "id" +  kos.getId().toString());
                 replyCode = status.getStatusCode();
             }
         } catch (IOException e) {

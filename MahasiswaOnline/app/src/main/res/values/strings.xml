@@ -15,5 +15,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_form_kos">FormKos</string>
+    <string name="title_activity_detail_kos">DetailKos</string>
 
 </resources>

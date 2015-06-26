@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ public class DetailKos extends Activity {
     private EditText textNamaPemilik, textAlamat, textHarga, textNoHP,textLongitude, textLatitude, textFasilitas;
     private Kos kos;
     private ServerRequest server;
+    private Button goPeta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,25 @@ public class DetailKos extends Activity {
         initView();
         //ActionBar actionBar = getActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(true);
+
+        //listener button peta
+        goPeta = (Button)findViewById(R.id.btn_goMaps);
+        goPeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String sumbuX = textLatitude.getText().toString();
+                String sumbuY = textLongitude.getText().toString();
+                int latitude = Integer.parseInt(sumbuX);
+                int longitude = Integer.parseInt(sumbuY);
+
+
+                Uri gmmIntentUri = Uri.parse("geo:"+latitude+","+longitude);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+            }
+        });
     }
 
     private void initView(){

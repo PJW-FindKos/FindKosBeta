@@ -76,7 +76,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.action_menu_edit:
                         showUpdateForm();
                         break;
@@ -94,7 +94,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
         new MainActivityAsync().execute("load");
     }
 
-    private void showUpdateForm(){
+    private void showUpdateForm() {
         Intent in = new Intent(getApplicationContext(), FormKos.class);
         in.putExtra("id", selectedList.getId().toString());
         in.putExtra("namaPemilik", selectedList.getNamaPemilik().toString());
@@ -110,9 +110,9 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
         startActivity(in);
     }
 
-    private void delete(){
+    private void delete() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Delete "+selectedList.getNamaPemilik()+" ?");
+        builder.setMessage("Delete " + selectedList.getNamaPemilik() + " ?");
         builder.setTitle("Delete");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -130,6 +130,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
         alert.setIcon(android.R.drawable.ic_menu_delete);
         alert.show();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -145,7 +146,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.option_menu_new:
                 Intent in = new Intent(getApplicationContext(), FormKos.class);
                 startActivity(in);
@@ -156,14 +157,14 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
     //private List<Mahasiswa> processResponse(String response){
     //List<Mahasiswa> list = new ArrayList<Mahasiswa>();
-    private List<Kos> processResponse(String response){
+    private List<Kos> processResponse(String response) {
         List<Kos> list = new ArrayList<Kos>();
         try {
             JSONObject jsonObj = new JSONObject(response);
             JSONArray jsonArray = jsonObj.getJSONArray("kos");
-            Log.d(TAG, "data lengt: "+jsonArray.length());
+            Log.d(TAG, "data lengt: " + jsonArray.length());
             Kos kos = null;
-            for(int i = 0; i < jsonArray.length(); i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
                 kos = new Kos();
                 kos.setId(obj.getInt("id"));
@@ -182,7 +183,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
         return list;
     }
 
-    private void populateListView(){
+    private void populateListView() {
         //adapter = new ListAdapterMahasiswa(getApplicationContext(), list);
         adapter = new ListAdapterKos(getApplicationContext(), list);
         listView.setAdapter(adapter);
@@ -190,7 +191,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View v, int pos, long id) {
-                if(actionMode != null){
+                if (actionMode != null) {
                     return false;
                 }
                 actionMode = startActionMode(amCallback);
@@ -226,7 +227,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
         });
     }
 
-    private class MainActivityAsync extends AsyncTask<String, Void, String>{
+    private class MainActivityAsync extends AsyncTask<String, Void, String> {
 
 
         @Override
@@ -240,9 +241,9 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
         @Override
         protected String doInBackground(String... params) {
-            if(params[0] == "delete"){
-                serverRequest.sendGetRequest(ServerRequest.urlDelete+"?id="+selectedList.getId().toString());
-            }else{
+            if (params[0] == "delete") {
+                serverRequest.sendGetRequest(ServerRequest.urlDelete + "?id=" + selectedList.getId().toString());
+            } else {
                 /** Mengirimkan request ke server dan memproses JSON response */
                 String response = serverRequest.sendGetRequest(ServerRequest.urlSelectAll);
                 list = processResponse(response);

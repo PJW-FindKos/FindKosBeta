@@ -71,7 +71,7 @@ public class DetailKos extends Activity {
         String alamat = getIntent().getStringExtra("alamat");
         String harga = getIntent().getStringExtra("harga");
         String noHP = getIntent().getStringExtra("noHP");
-        String longtitude = getIntent().getStringExtra("longtitude");
+        String longitude = getIntent().getStringExtra("longitude");
         String latitude = getIntent().getStringExtra("latitude");
         String fasilitas = getIntent().getStringExtra("fasilitas");
 
@@ -79,7 +79,7 @@ public class DetailKos extends Activity {
         textHarga.setText(harga);
         textNoHP.setText(noHP);
         textAlamat.setText(alamat);
-        textLongitude.setText(longtitude);
+        textLongitude.setText(longitude);
         textLatitude.setText(latitude);
         textFasilitas.setText(fasilitas);
 
@@ -88,7 +88,7 @@ public class DetailKos extends Activity {
         kos.setHarga(harga);
         kos.setNoHP(noHP);
         kos.setAlamat(alamat);
-        kos.setLongitude(longtitude);
+        kos.setLongitude(longitude);
         kos.setLatitude(latitude);
         kos.setFasilitas(fasilitas);
     }
